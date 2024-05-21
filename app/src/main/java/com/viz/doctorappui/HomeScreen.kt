@@ -24,8 +24,12 @@ fun HomeScreen() {
                     .fillMaxSize()
                     .padding(it)
             ) {
-                ContentBar(navController = NavHostController(LocalContext.current))
+//                ContentBar(navController = NavHostController(LocalContext.current))
+            Navigation()
+
+
             }
+
 
         }
     )
