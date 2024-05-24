@@ -14,15 +14,23 @@ fun Navigation() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.contentScreen)
+        startDestination = Routes.homeScreen)
     {
-        composable(Routes.contentScreen) {
-            ContentBar(navController)
+        composable(Routes.homeScreen) {
+            HomeScreen(navController)
         }
         composable(Routes.doctorList) {
             DoctorList(navController)
         }
+        composable(Routes.doctorDetails) {
+            DoctorDetails(navController)
+
+    }
+
+//    NavHost(navController = navController, startDestination = R) {
+
     }
 }
+
 
 
