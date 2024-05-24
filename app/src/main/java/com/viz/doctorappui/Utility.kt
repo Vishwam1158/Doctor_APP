@@ -3,46 +3,33 @@ package com.viz.doctorappui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.core.widgets.Rectangle as Rectangle1
+import androidx.navigation.NavHostController
 
-// In this file we write codes for Searchbar and ImageButton
+// In this file we write codes for DoctorCard and ImageButton
 
-//@Composable
-//fun SerchBar() {
-//
-//}
 
 @Composable
 fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String ) {
@@ -54,7 +41,7 @@ fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String ) 
                 onClick = { /*TODO*/ },
                 modifier = Modifier
                     .size(64.dp, 64.dp)
-                    .clip(RoundedCornerShape(10.dp)) // must declare brfore the background coloe
+                    .clip(RoundedCornerShape(10.dp)) // must declare before the background color
                     .background(color = backgroundColor)
             ) {
                 Icon(
@@ -76,19 +63,22 @@ fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String ) 
 
 @Composable
 fun DoctorCard(
+    id : Int,
     image : Painter,
     doctorName : String,
     specilization : String,
     hospitalName : String,
     rating : Int,
     status : String,
-    onClick: @Composable () -> Unit
+    navController: NavHostController
+//    onClick: () -> Unit
 ) {
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 5.dp, bottom = 5.dp)
-            .clickable { onClick },
+            .padding(top = 5.dp, bottom = 8.dp)
+            .clickable(onClick = {navController.navigate(Routes.doctorDetails)}),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -104,8 +94,7 @@ fun DoctorCard(
             Spacer(modifier = Modifier.padding(8.dp))
 
             // right side part
-            Column(
-            ) {
+            Column {
                 //doctor name
                 Text(
                     text = doctorName,
@@ -115,7 +104,7 @@ fun DoctorCard(
                 Spacer(modifier = Modifier.padding(1.dp))
 
                 // specilization and hospital name
-                Row() {
+                Row {
                     Text(
                         text = specilization,
                         fontSize = 15.sp,
@@ -152,10 +141,9 @@ fun DoctorCard(
 
                     Spacer(modifier = Modifier.padding(12.dp))
                     if (status == "Open") {
-//                        RoundedCornerButton(text = "Open", btnColor = Color(0xFFCCF5E1), txtColor = Color(0xFF00CC6A), onClick = {})
                         Button(
                             onClick = {  },
-                            shape = RoundedCornerShape(12.dp), // Adjust the corner radius as needed
+                            shape = RoundedCornerShape(12.dp),
                             colors = ButtonDefaults.buttonColors(Color(0xFFCCF5E1)),
                         ) {
                             Text(
@@ -166,10 +154,9 @@ fun DoctorCard(
                         }
                     }
                     else {
-//                        RoundedCornerButton(text = "Close", btnColor = Color(0xFFFF7E4D9), txtColor = Color(0xFFCC4900), onClick = {})
                         Button(
                             onClick = {  },
-                            shape = RoundedCornerShape(12.dp), // Adjust the corner radius as needed
+                            shape = RoundedCornerShape(12.dp),
                             colors = ButtonDefaults.buttonColors(Color(0xFFFF7E4D9)),
                         ) {
                             Text(
@@ -185,28 +172,29 @@ fun DoctorCard(
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-private fun Preview() {
-//    CustomImageButton(
-//        backgroundColor = Color(0xFF639AFF),
-//        icon = painterResource(id = R.drawable.menu),
-//        title = "Menu"
-//    )
-
-    DoctorCard(
-        image = painterResource(id = R.drawable.doctor1),
-        doctorName = "dr. Gilang Segara Bening",
-        specilization = "Heart",
-        hospitalName = "Persahabatan Hospital",
-        rating = 1221,
-        status = "Open",
-        onClick = {
-            DoctorDetails()
-        })
-
-
-}
+//
+//@Preview(showBackground = true)
+//@Composable
+//private fun Preview() {
+////    CustomImageButton(
+////        backgroundColor = Color(0xFF639AFF),
+////        icon = painterResource(id = R.drawable.menu),
+////        title = "Menu"
+////    )
+//
+//    DoctorCard(
+//        id = 1,
+//        image = painterResource(id = R.drawable.doctor1),
+//        doctorName = "dr. Golang Segura Beaning",
+//        specilization = "Heart",
+//        hospitalName = "Supernatants Hospital",
+//        rating = 1221,
+//        status = "Open",
+//        onClick = {
+//            DoctorDetails(navController)
+//        })
+//
+//
+//}
 
 
