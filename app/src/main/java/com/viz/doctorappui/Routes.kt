@@ -1,6 +1,7 @@
 package com.viz.doctorappui
 
 object Routes {
-    var contentScreen = "contentBar";
-    var doctorList = "doctorList";
+    val doctorDetails = "doctorDetails"
+    var homeScreen =   "HomeScreen"
+    var doctorList = "doctorList"
 }
