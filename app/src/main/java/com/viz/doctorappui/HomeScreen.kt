@@ -93,7 +93,7 @@ fun HomeScreen(navController: NavHostController) {
                             Text(text = "Top Doctors", fontSize = 24.sp, color = Color(0XFF25282B))
                             Button(
                                 onClick = {
-                                    navController.navigate(Routes.doctorList)
+                                    navController.navigate(Screen.DoctorList.route)
                                 },
                                 colors = ButtonDefaults.buttonColors( Color(0x00000000)),
                             ) {

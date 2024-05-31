@@ -31,7 +31,7 @@ fun DoctorList(navController: NavHostController) {
         ) {
 
             Button(
-                onClick = { navController.navigate(Routes.homeScreen) },
+                onClick = { navController.navigate(Screen.HomeScreen.route) },  //Screen.DoctorDetails.withArgs("5")
                 colors = ButtonDefaults.buttonColors(Color.Transparent)
             ) {
                 Icon(
