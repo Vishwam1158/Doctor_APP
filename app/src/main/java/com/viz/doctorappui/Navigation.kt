@@ -24,17 +24,18 @@ fun Navigation() {
             DoctorList(navController)
         }
         composable(
-            Screen.DoctorDetails.route + "/{name}", // for option argument use "?id={id}" instead of "/{id}"
+            Screen.DoctorDetails.route + "/{id}", // for option argument use "?id={id}" instead of "/{id}"
             listOf(
-                navArgument("name") {
-                    type = NavType.StringType
-                    defaultValue = "No Name"
+                navArgument("id") {
+                    type = NavType.IntType
+//                    defaultValue = 1
 //                    nullable = true
                 }
             )
         ) { backStackEntry ->
-            DoctorDetails(name = backStackEntry.arguments?.getString("name"), navController)
 //            val id = backStackEntry.arguments?.getString("id")?.toInt() ?: 0
+//            DoctorDetails(name = , navController = )
+            DoctorDetails(id = backStackEntry.arguments?.getInt("id"), navController)
 //            DoctorDetails(id, navController)
 
     }
