@@ -1,5 +1,6 @@
 package com.viz.doctorappui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -7,9 +8,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -32,13 +35,15 @@ import androidx.navigation.NavHostController
 
 
 @Composable
-fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String ) {
+fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String, navController: NavHostController) {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate(Screen.ButtonClick.route)
+                },
                 modifier = Modifier
                     .size(64.dp, 64.dp)
                     .clip(RoundedCornerShape(10.dp)) // must declare before the background color
@@ -61,6 +66,7 @@ fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String ) 
 
 
 
+@SuppressLint("InvalidColorHexValue")
 @Composable
 fun DoctorCard(
     id : Int,
@@ -78,7 +84,7 @@ fun DoctorCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 5.dp, bottom = 8.dp)
-            .clickable(onClick = {navController.navigate(Routes.doctorDetails)}),
+            .clickable(onClick = { navController.navigate(Screen.DoctorDetails.withArgs(id)) }),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -111,7 +117,7 @@ fun DoctorCard(
                         color = Color(0xFFAAAAAA)
                     )
 
-                    Spacer(modifier = Modifier.padding(8.dp))
+                    Spacer(Modifier.height(8.dp))
                     Image(
                         painter = painterResource(id = R.drawable.circle),
                         contentDescription = "circle",
@@ -120,7 +126,7 @@ fun DoctorCard(
                             .size(4.dp, 4.dp),
                     )
 
-                    Spacer(modifier = Modifier.padding(8.dp))
+                    Spacer(Modifier.height(8.dp))
                     Text(
                         text = hospitalName,
                         fontSize = 15.sp,
@@ -172,6 +178,21 @@ fun DoctorCard(
     }
 }
 
+
+//Appointment slot button
+@Composable
+fun SlotButton(time : String) {
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = Modifier.padding(4.dp),
+        shape = RoundedCornerShape(10.dp),
+        colors = ButtonDefaults.buttonColors(Color(0xffffffff)),
+        border = ButtonDefaults.outlinedButtonBorder
+    ) {
+        Text(text = time, color = Color(0xFF404345), fontSize = 16.sp)
+    }
+}
+
 //
 //@Preview(showBackground = true)
 //@Composable
@@ -193,7 +214,34 @@ fun DoctorCard(
 //        onClick = {
 //            DoctorDetails(navController)
 //        })
+//  
+//    SlotButton(time = "10:00 AM")
+//}
+
+
+// CustomImageButton's optional code
+//@Preview
+//@Composable
+//private fun CustomButton() {
+//    Button(onClick = {},
+//        shape = RoundedCornerShape(10.dp),
+//        modifier = Modifier
+//            .size(64.dp, 64.dp)
+//            .clip(RoundedCornerShape(10.dp)) // must declare before the background color
+//            .height(64.dp)
+//            .width(64.dp)
 //
+//    ) {
+//            Icon(
+//                painter = painterResource(id = R.drawable.heart_03),
+//                modifier = Modifier
+//                    .height(32.dp)
+//                    .width(32.dp),
+//                contentDescription = "Image Button of ",
+//                tint = Color.White
+//            )
+//
+//    }
 //
 //}
 

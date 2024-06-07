@@ -64,20 +64,20 @@ fun HomeScreen(navController: NavHostController) {
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceAround
                         ) {
-                            CustomImageButton(backgroundColor = Color(0xFF639AFF), icon = painterResource(id = R.drawable.stethoscope_01), title = "Consult")
-                            CustomImageButton(backgroundColor = Color(0xFFA584FF), icon = painterResource(id = R.drawable.teeth_02), title = "Dental")
-                            CustomImageButton(backgroundColor = Color(0xFFFF7854), icon = painterResource(id = R.drawable.heart_03), title = "Heart")
-                            CustomImageButton(backgroundColor = Color(0xFFFEA725), icon = painterResource(id = R.drawable.clinic_04), title = "Hospitals")
+                            CustomImageButton(backgroundColor = Color(0xFF639AFF), icon = painterResource(id = R.drawable.stethoscope_01), title = "Consult", navController = navController)
+                            CustomImageButton(backgroundColor = Color(0xFFA584FF), icon = painterResource(id = R.drawable.teeth_02), title = "Dental", navController = navController)
+                            CustomImageButton(backgroundColor = Color(0xFFFF7854), icon = painterResource(id = R.drawable.heart_03), title = "Heart", navController = navController)
+                            CustomImageButton(backgroundColor = Color(0xFFFEA725), icon = painterResource(id = R.drawable.clinic_04), title = "Hospitals", navController = navController)
                         }
 
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceAround
                         ) {
-                            CustomImageButton(backgroundColor = Color(0xFF1AD37A), icon = painterResource(id = R.drawable.medicine_05), title = "Medicines")
-                            CustomImageButton(backgroundColor = Color(0xFF05D1ED), icon = painterResource(id = R.drawable.care_06), title = "Physician")
-                            CustomImageButton(backgroundColor = Color(0xFFFF71C6), icon = painterResource(id = R.drawable.bandage_07), title = "Skin")
-                            CustomImageButton(backgroundColor = Color(0xFFFF7070), icon = painterResource(id = R.drawable.syringe_08), title = "Surgeon")
+                            CustomImageButton(backgroundColor = Color(0xFF1AD37A), icon = painterResource(id = R.drawable.medicine_05), title = "Medicines", navController = navController)
+                            CustomImageButton(backgroundColor = Color(0xFF05D1ED), icon = painterResource(id = R.drawable.care_06), title = "Physician", navController = navController)
+                            CustomImageButton(backgroundColor = Color(0xFFFF71C6), icon = painterResource(id = R.drawable.bandage_07), title = "Skin", navController = navController)
+                            CustomImageButton(backgroundColor = Color(0xFFFF7070), icon = painterResource(id = R.drawable.syringe_08), title = "Surgeon", navController = navController)
                         }
                     }
                     Spacer(modifier = Modifier.padding(18.dp))

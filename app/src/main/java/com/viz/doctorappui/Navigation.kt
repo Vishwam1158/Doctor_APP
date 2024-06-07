@@ -38,7 +38,13 @@ fun Navigation() {
             DoctorDetails(id = backStackEntry.arguments?.getInt("id"), navController)
 //            DoctorDetails(id, navController)
 
-    }
+        }
+        composable(Screen.Appointment.route) {
+            Appointment(navController)
+        }
+        composable(Screen.ButtonClick.route) {
+            ButtonClick(navController)
+        }
 
 //    NavHost(navController = navController, startDestination = R) {
 
