@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -61,6 +62,7 @@ fun DoctorDetails(id: Int?, navController: NavHostController) {
         modifier = Modifier
             .fillMaxSize()
             .padding(top = 28.dp, start = 4.dp)
+            .verticalScroll(rememberScrollState())
     ) {
         val doctorsList =
             listOf(
@@ -74,32 +76,83 @@ fun DoctorDetails(id: Int?, navController: NavHostController) {
                     patient = 1221,
                     status = "Open",
                 ),
-//                    DoctorData(2, "Item 2", "Description of Item 2"),
-//                    DoctorData(3, "Item 3", "Description of Item 3"),
-//                    DoctorData(4, "Item 1", "Description of Item 1"),
-//                    DoctorData(5, "Item 2", "Description of Item 2"),
-//                    DoctorData(6, "Item 3", "Description of Item 3"),
-//                    DoctorData(7, "Item 1", "Description of Item 1"),
-//                    DoctorData(8, "Item 2", "Description of Item 2"),
-                // Add more items here
+                DoctorData(
+                    id = 2,
+                    image = painterResource(id = R.drawable.doctor2),
+                    doctorName = "dr. Shabil Chan",
+                    specilization = "Dental",
+                    hospitalName = "Columbia Asia Hospital",
+                    description = "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. ",
+                    patient = 964,
+                    status = "Open",
+                ),
+                DoctorData(
+                    id = 3,
+                    image = painterResource(id = R.drawable.doctor3),
+                    doctorName = "dr. Mustakim",
+                    specilization = "Eye",
+                    hospitalName = "alemba Carolus Hospital",
+                    description = "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. ",
+                    patient = 762,
+                    status = "Close",
+                ),
+                DoctorData(
+                    id = 4,
+                    image = painterResource(id = R.drawable.doctor4),
+                    doctorName = "dr. Suprihatini",
+                    specilization = "Heart",
+                    hospitalName = "Salemba Carolus  Hospital",
+                    description = "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. ",
+                    patient = 651,
+                    status = "Open",
+                ),
+                DoctorData(
+                    id = 5,
+                    image = painterResource(id = R.drawable.doctor2),
+                    doctorName = "dr. Maria Rodriguez",
+                    specilization = "Heart",
+                    hospitalName = "Supernatants Hospital",
+                    description = "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. ",
+                    patient = 603,
+                    status = "Open",
+                ),
+                DoctorData(
+                    id = 6,
+                    image = painterResource(id = R.drawable.doctor4),
+                    doctorName = "dr. Aisha Patel",
+                    specilization = "Eye",
+                    hospitalName = "Columbia Asia  Hospital",
+                    description = "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. ",
+                    patient = 571,
+                    status = "Close",
+                ),
+                DoctorData(
+                    id = 7,
+                    image = painterResource(id = R.drawable.doctor1),
+                    doctorName = "dr. John Smith",
+                    specilization = "Heart",
+                    hospitalName = "Salemba Carolus  Hospital",
+                    description = "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. ",
+                    patient = 505,
+                    status = "Open",
+                ),
+                DoctorData(
+                    id = 8,
+                    image = painterResource(id = R.drawable.doctor3),
+                    doctorName = "dr. Michael Jones",
+                    specilization = "Dental",
+                    hospitalName = "Salemba Carolus Hospital",
+                    description = "dr. Gilang is one of the best doctors in the Persahabatan Hospital. He has saved more than 1000 patients in the past 3 years. He has also received many awards from domestic and abroad as the best doctors. He is available on a private or schedule. ",
+                    patient = 473,
+                    status = "Close",
+                ),
             )
 
 
         val doctor = doctorsList.find { it.id == id } ?: return
-
         var currentIcon by mutableStateOf(Icons.Filled.FavoriteBorder)
-//        val onClick = {
-//            // Toggle the icon
-//            currentIcon = if (currentIcon == Icons.Filled.Favorite) {
-//                Icons.Filled.FavoriteBorder
-//            } else {
-//                Icons.Filled.Favorite
-//            }
-//        }
-        Box(
-            modifier = Modifier
-                .verticalScroll(rememberScrollState())
-        ) {
+
+        Box {
             Image(
                 painter = doctor.image,
                 contentDescription = "Doctor Image",
@@ -136,9 +189,6 @@ fun DoctorDetails(id: Int?, navController: NavHostController) {
                     contentDescription = "Bookmark")
             }
         }
-                // Doctor details
-//            val doctors = DoctorDetailsList().find { it.id == id } ?: return
-//
 
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -255,6 +305,28 @@ fun DoctorDetails(id: Int?, navController: NavHostController) {
                     }
                 }
             }
+
+        }
+        Spacer(Modifier.height(12.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+        ) {
+            CustomImageButton(backgroundColor = Color(0xff4485FD), icon = painterResource(id = R.drawable.icons_comment), title = "", navController = navController)
+
+            Button(onClick = {
+                             navController.navigate(Screen.Appointment.route)
+            },
+                colors = ButtonDefaults.buttonColors(Color(0xff00CC6A)),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp)
+                    .height(64.dp)
+            ) {
+                Text(text = "Make an Appointment", fontSize = 20.sp)
+            }
         }
     }
 }
@@ -275,7 +347,6 @@ private fun Preview() {
 //    }
 //}
 
-@Preview(showBackground = true)
 @Composable
 fun VerticalLine(
     color: Color = Color(0XFFCACCCF),
