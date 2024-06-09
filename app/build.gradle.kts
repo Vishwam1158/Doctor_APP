@@ -74,4 +74,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Material3-core
+    implementation("com.maxkeppeler.sheets-compose-dialogs:core:1.0.2")
+    //Material3-calendar
+    implementation("com.maxkeppeler.sheets-compose-dialogs:calendar:1.0.2")
 }
