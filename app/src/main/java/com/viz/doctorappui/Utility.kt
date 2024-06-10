@@ -31,8 +31,8 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -48,6 +48,11 @@ import androidx.navigation.NavHostController
 import kotlin.random.Random
 
 // In this file we write codes for DoctorCard and ImageButton
+// SerchBar - 60
+// CustomImageButton - 101
+// DoctorCard - 130
+// SlotButton - 243, SlotButtonGroup -273
+// FavoriteButton - 300
 @Preview(showBackground = true)
 @Composable
 fun SearchBar() {
@@ -90,8 +95,6 @@ fun SearchBar() {
 }
 
 
-
-
 @Composable
 fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String, navController: NavHostController) {
 
@@ -122,9 +125,6 @@ fun CustomImageButton(backgroundColor : Color, icon : Painter, title : String, n
 
 
 
-
-
-//@SuppressLint("InvalidColorHexValue")
 @Composable
 fun DoctorCard(
     id : Int,
@@ -290,6 +290,38 @@ fun SlotButtonGroup(times: List<String>) {
         }
     }
 }
+
+
+
+
+//@SuppressLint("UnrememberedMutableState")
+//@Composable
+//fun FavoriteButton(
+//    item: Item,
+//    isFavorite: Boolean,
+//    onFavoriteChange: (Item, Boolean) -> Unit,
+//    modifier: Modifier
+//) {
+////    var currentIcon by mutableStateOf(Icons.Filled.FavoriteBorder)
+//    Button(
+//        onClick = {
+////            currentIcon = if (currentIcon == Icons.Filled.Favorite) {
+////        Icons.Filled.FavoriteBorder
+////    } else {
+////        Icons.Filled.Favorite
+////    }
+//        onFavoriteChange(item, !isFavorite) },
+//        modifier =  modifier, //Modifier.align(TopEnd),
+//        colors = ButtonDefaults.buttonColors(Color.Transparent)
+//    ) {
+//        Icon(
+//            imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+//            tint = Color.Black,
+//            contentDescription = if (isFavorite) "Unfavorite" else "Favorite"
+//        )
+//    }
+//}
+
 //@Preview(showBackground = true)
 //@Composable
 //private fun Preview() {
