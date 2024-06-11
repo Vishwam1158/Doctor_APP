@@ -15,8 +15,11 @@ fun Navigation() {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.HomeScreen.route)
+        startDestination = Screen.App.route)
     {
+        composable(Screen.App.route) {
+            App(navController)
+        }
         composable(Screen.HomeScreen.route) {
             HomeScreen(navController)
         }
@@ -34,7 +37,6 @@ fun Navigation() {
             )
         ) { backStackEntry ->
 //            val id = backStackEntry.arguments?.getString("id")?.toInt() ?: 0
-//            DoctorDetails(name = , navController = )
             DoctorDetails(id = backStackEntry.arguments?.getInt("id"), navController)
 //            DoctorDetails(id, navController)
 
@@ -44,6 +46,9 @@ fun Navigation() {
         }
         composable(Screen.ButtonClick.route) {
             ButtonClick(navController)
+        }
+        composable(Screen.Favorite.route) {
+            FavoriteDoctorsScreen(navController)
         }
 
 //    NavHost(navController = navController, startDestination = R) {
